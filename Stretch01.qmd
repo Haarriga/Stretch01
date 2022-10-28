@@ -75,3 +75,25 @@ labs(title = "Virginia's Unemployment Rate Fluctuates around 5% in Recent Years"
        y = "Unemployment Rate (%)")
 ```
 In total, Virginia's unemployment rate holds around 5% in recent years. Unemployment rate increased dramatically in 2008 and 2020, respectively due to the great recession and the covid-19 pandemic. In spite of the fluctuations, unemployment rate in Virginia has normally been lower than national unemployment rate in the US.
+
+## Graph 3
+Bar chart: Virginia's unemployment rate by race
+```{r}
+data %>%
+  filter(PopulationGroup == "Asian" | PopulationGroup == "Black or African American" |
+           PopulationGroup == "White" |
+           PopulationGroup == "Hispanic or Latino ethnicity") %>%
+  filter(Year >= 2016) %>%
+  ggplot() +
+  geom_col(aes(x = Year,
+               y = CivilianLaborForceUnemployedPercentOfPopulation,
+               fill = PopulationGroup),
+           position = "dodge") +
+  scale_fill_manual(values = c("blue","light blue","purple","pink")) +
+  labs(y = "Unemployment rate (%)", 
+       title = "Unemployment Rate among African American Is Normally the Highest",
+       subtitle = "Unemployment rate among minority groups has been higher than among white people in the past 5 years in Virginia.",
+       caption = "Source: data.virginia.gov")
+
+```
+Overall, the unemployment rate by race fluctuated in the recent 5 years (2016-2020) in Virginia. Among four races, Black experienced the highest unemployment rate until 2020, while the unemployment rate of White was the lowest over years. It's worth noting that COVID-19 had exacted a significant toll on the labor market in Virginia. The unemployment rates of four races have significantly risen in 2020, especially for minority communities (Asian, Black, and Hispanic). Minority communities faced worse labor market outcomes than the aggregate or averages suggest. Policies should not only aim to stimulate overall employment but also needs to promote equitable outcomes in the labor market.
