@@ -35,3 +35,24 @@ data %>%
        caption = "Source: data.virginia.gov")
 
 ```
+
+## Graph 2
+Line chart: Virginia's unemployment rate over years
+```{r}
+data %>%
+  filter(GroupCode == "01") %>%
+  ggplot(aes(x = Year,
+             y = CivilianLaborForceUnemployedPercentOfPopulation)) +
+  geom_text(aes(label = CivilianLaborForceUnemployedPercentOfPopulation),
+            vjust = 2,
+            nudge_x = 0.1) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(limits = c(1,8)) +
+labs(title = "Virginia's Unemployment Rate Fluctuates around 5% in Recent Years",
+     subtitle = "Unemployment rate in Virginia increased dramatically in 2020, probably due to the pandemic.",
+       caption = "Source: data.virginia.gov",
+       x = "Year",
+       y = "Unemployment Rate (%)")
+```
+In total, Virginia's unemployment rate holds around 5% in recent years. Unemployment rate increased dramatically in 2008 and 2020, respectively due to the great recession and the covid-19 pandemic. In spite of the fluctuations, unemployment rate in Virginia has normally been lower than national unemployment rate in the US.
