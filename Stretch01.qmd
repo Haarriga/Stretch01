@@ -14,14 +14,30 @@ Quarto enables you to weave together content and executable code into a finished
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
-1 + 1
+library(readr)
+library(tidyverse)
+data <- read_csv("Virginia_Employment_Status_of_the_Population_by_Sex_by_Race_and_by_Age_by_Year.csv")
 ```
 
-You can add options to executable code like this
-
+Graph 1 
 ```{r}
-#| echo: false
-2 * 2
+data %>%
+  filter(PopulationGroup == "Total") %>%
+  ggplot() +
+  geom_line(aes(x = Year,
+                y = CivilianLaborForce,
+                color = "Labor force")) +
+  geom_line(aes(x = Year,
+                y = CivilianNonInstitutionalPopulation,
+                color = "Population")) +
+  scale_color_manual("", 
+                     values = c(
+    "Labor force" = "red",
+    "Population" = "blue")) +
+  labs(y = "The number of people (thousand)",
+       title = "Difference Between Labor Force and Population",
+       subtitle = "The increase of labor force fluctuates, while total population increases steadily in Virginia.",
+       caption = "Source: data.virginia.gov")
 ```
 
 The `echo: false` option disables the printing of code (only output is displayed).
