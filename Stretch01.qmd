@@ -2,24 +2,19 @@
 title: "Stretch01"
 author: "Ming & Huixin"
 format: html
-editor: visual
+editor: source
+self-contained: true
 ---
-
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
+## Graph 1
+Line chart： Virginia's labor force and total population over years
 ```{r}
+#| output: false
 library(readr)
 library(tidyverse)
 data <- read_csv("Virginia_Employment_Status_of_the_Population_by_Sex_by_Race_and_by_Age_by_Year.csv")
+
 ```
 
-Graph 1 
 ```{r}
 data %>%
   filter(PopulationGroup == "Total") %>%
@@ -38,6 +33,5 @@ data %>%
        title = "Difference Between Labor Force and Population",
        subtitle = "The increase of labor force fluctuates, while total population increases steadily in Virginia.",
        caption = "Source: data.virginia.gov")
-```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+```
