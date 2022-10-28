@@ -76,9 +76,18 @@ data %>%
        title = "Unemployment Rate among African American Is Normally the Highest",
        subtitle = "Unemployment rate among minority groups has been higher than among white people in the past 5 years in Virginia.",
        caption = "Source: data.virginia.gov")
+
 ```
 
 Graph4 
+=======
+
+```
+Overall, the unemployment rate by race fluctuated in the recent 5 years (2016-2020) in Virginia. Among four races, Black experienced the highest unemployment rate until 2020, while the unemployment rate of White was the lowest over years. It's worth noting that COVID-19 had exacted a significant toll on the labor market in Virginia. The unemployment rates of four races have significantly risen in 2020, especially for minority communities (Asian, Black, and Hispanic). Minority communities faced worse labor market outcomes than the aggregate or averages suggest. Policies should not only aim to stimulate overall employment but also needs to promote equitable outcomes in the labor market.
+
+## Graph 4
+Pie chart: Virginia's labor force by gender
+
 ```{r}
 cp <- coord_polar(theta = "y")
 cp$is_free <- function() TRUE
@@ -103,4 +112,4 @@ data %>%
        subtitle = "The number of women in the labor force has normally been lower than men in Virginia in the past 17 years.",
        caption = "Source: data.virginia.gov")
 
-```
+
