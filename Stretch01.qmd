@@ -59,3 +59,23 @@ labs(title = "Virginia's Unemployment Rate Fluctuates around 5% in Recent Years"
        y = "Unemployment Rate (%)")
 
 ```
+Graph3 
+```{r}
+data %>%
+  filter(PopulationGroup == "Asian" | PopulationGroup == "Black or African American" |
+           PopulationGroup == "White" |
+           PopulationGroup == "Hispanic or Latino ethnicity") %>%
+  filter(Year >= 2016) %>%
+  ggplot() +
+  geom_col(aes(x = Year,
+               y = CivilianLaborForceUnemployedPercentOfPopulation,
+               fill = PopulationGroup),
+           position = "dodge") +
+  scale_fill_manual(values = c("blue","light blue","purple","pink")) +
+  labs(y = "Unemployment rate (%)", 
+       title = "Unemployment Rate among African American Is Normally the Highest",
+       subtitle = "Unemployment rate among minority groups has been higher than among white people in the past 5 years in Virginia.",
+       caption = "Source: data.virginia.gov")
+
+
+```
