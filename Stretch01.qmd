@@ -77,3 +77,30 @@ data %>%
        subtitle = "Unemployment rate among minority groups has been higher than among white people in the past 5 years in Virginia.",
        caption = "Source: data.virginia.gov")
 ```
+
+Graph4 
+```{r}
+cp <- coord_polar(theta = "y")
+cp$is_free <- function() TRUE
+
+data %>%
+  filter(PopulationGroup == "Men"|
+           PopulationGroup == "Women") %>%
+  ggplot(aes(x = "", 
+             y = CivilianLaborForce,
+             fill = PopulationGroup)) +
+  geom_bar(stat = "identity",
+           color = "black",
+           width = 1) +
+  geom_text(aes(label=CivilianLaborForce),
+            position = position_stack(vjust = 0.5),
+            size = 2.5) +
+  cp +
+  scale_fill_brewer(palette="Set2") +
+  facet_wrap(~Year, scales = "free") +
+  theme_void() +
+  labs(title = "The Number of Women in the Labor Force Is Lower in Virginia",
+       subtitle = "The number of women in the labor force has normally been lower than men in Virginia in the past 17 years.",
+       caption = "Source: data.virginia.gov")
+
+```
