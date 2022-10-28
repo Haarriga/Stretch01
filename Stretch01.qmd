@@ -76,6 +76,4 @@ data %>%
        title = "Unemployment Rate among African American Is Normally the Highest",
        subtitle = "Unemployment rate among minority groups has been higher than among white people in the past 5 years in Virginia.",
        caption = "Source: data.virginia.gov")
-
-
 ```
