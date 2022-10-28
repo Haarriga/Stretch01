@@ -97,3 +97,32 @@ data %>%
 
 ```
 Overall, the unemployment rate by race fluctuated in the recent 5 years (2016-2020) in Virginia. Among four races, Black experienced the highest unemployment rate until 2020, while the unemployment rate of White was the lowest over years. It's worth noting that COVID-19 had exacted a significant toll on the labor market in Virginia. The unemployment rates of four races have significantly risen in 2020, especially for minority communities (Asian, Black, and Hispanic). Minority communities faced worse labor market outcomes than the aggregate or averages suggest. Policies should not only aim to stimulate overall employment but also needs to promote equitable outcomes in the labor market.
+
+## Graph 4
+Pie chart: Virginia's labor force by gender
+```{r}
+cp <- coord_polar(theta = "y")
+cp$is_free <- function() TRUE
+
+data %>%
+  filter(PopulationGroup == "Men"|
+           PopulationGroup == "Women") %>%
+  ggplot(aes(x = "", 
+             y = CivilianLaborForce,
+             fill = PopulationGroup)) +
+  geom_bar(stat = "identity",
+           color = "black",
+           width = 1) +
+  geom_text(aes(label=CivilianLaborForce),
+            position = position_stack(vjust = 0.5),
+            size = 2.5) +
+  cp +
+  scale_fill_brewer(palette="Set2") +
+  facet_wrap(~Year, scales = "free") +
+  theme_void() +
+  labs(title = "The Number of Women in the Labor Force Is Lower in Virginia",
+       subtitle = "The number of women in the labor force has normally been lower than men in Virginia in the past 17 years.",
+       caption = "Source: data.virginia.gov")
+
+```
+Overall, the number of women in the labor force was lower than men's in Virginal in recent 17 years (2004-2020). The percentage of women in the workforce was stable over 17 years, with women accounting for approximately 48% of the workforce in Virginia. Accounting for the fact the percentage of the female population is higher than men, policies should incentivize women's participation in the labor force to stimulate the increase rate of the labor force, as shown in graph 1.
