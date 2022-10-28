@@ -34,4 +34,23 @@ data %>%
        subtitle = "The increase of labor force fluctuates, while total population increases steadily in Virginia.",
        caption = "Source: data.virginia.gov")
 
+Graph2 
+```{r}
+data %>%
+  filter(GroupCode == "01") %>%
+  ggplot(aes(x = Year,
+             y = CivilianLaborForceUnemployedPercentOfPopulation)) +
+  geom_text(aes(label = CivilianLaborForceUnemployedPercentOfPopulation),
+            vjust = 2,
+            nudge_x = 0.1) +
+  geom_line() +
+  geom_point() +
+  scale_y_continuous(limits = c(1,8)) +
+labs(title = "Virginia's Unemployment Rate Fluctuates around 5% in Recent Years",
+     subtitle = "Unemployment rate in Virginia increased dramatically in 2020, probably due to the pandemic.",
+       caption = "Source: data.virginia.gov",
+       x = "Year",
+       y = "Unemployment Rate (%)")
+
+=======
 ```
